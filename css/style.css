@@ -190,7 +190,7 @@ body a:link, body a:hover, body a:visited, body a:active {
   box-sizing: border-box;
   padding-bottom: 1em;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-end;
 }
 
@@ -198,7 +198,7 @@ body a:link, body a:hover, body a:visited, body a:active {
   max-width: 290px;
   margin: 0 .5em;
   border-radius: 5px;
-  max-height: 100%;
+  max-height: 320px;
   box-shadow: 0 0 10px black;
 }
 
