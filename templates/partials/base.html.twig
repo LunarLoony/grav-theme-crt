@@ -1,0 +1,67 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}">
+<head>
+{% block head %}
+  <meta charset="utf-8" />
+  <title>{% if header.title %}{{ header.title|e('html') }} - {% endif %}{{ site.title|e('html') }}</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% include 'partials/metadata.html.twig' %}
+
+  <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+  <link rel="canonical" href="{{ page.url(true, true) }}" />
+
+  {% block stylesheets %}
+    {% do assets.addCss('theme://css/style.css', 100) %}
+    {% do assets.addCss('theme://font-awesome/css/all.min.css', 99) %}
+    {% do assets.addCss('theme://css/magnific-popup.min.css', 98) %}
+  {% endblock %}
+  {{ assets.css() }}
+
+  {% block javascripts %}
+    {% do assets.addJs('jquery', 100) %}
+    {% do assets.addJs('theme://js/jquery.magnific-popup.min.js', 99) %}
+  {% endblock %}
+  {{ assets.js() }}
+
+{% endblock head%}
+</head>
+<body class="{{ page.header.body_classes }}">
+  <div id="bigflexbox">
+
+    <section id="sidebar">
+      {% block navigation %}
+        {% include 'partials/navigation.html.twig' %}
+      {% endblock %}
+      
+    </section>
+
+    {% block body %}
+        {% block content %}{% endblock %}
+    {% endblock %}
+
+    <div id="backdrop" style="background-image: url('{{base_url}}/{{ header.custom.background|first.path }}');">
+
+    {% block bottom %}
+      {{ assets.js('bottom') }}
+
+      <script type="text/javascript" defer>
+
+        $(document).ready(function() {
+          $('.screenshots').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+            gallery: {
+              enabled: true
+            }
+          });
+        });
+
+      </script>
+    {% endblock %}
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+title: Page Content
+@extends:
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+
+          fields:
+            header.custom.boxart:
+              type: file
+              label: Boxart (or photo)
+              destination: 'user/images/boxart'
+              multiple: false
+              accept:
+                - image/*
+
+            header.custom.background:
+              type: file
+              label: Background
+              destination: 'user/images/bg'
+              multiple: false
+              accept:
+                - image/*
+
+            header.custom.dev:
+              type: text
+              label: Developer
+
+            header.custom.rls:
+              type: text
+              label: Release Date
+
+            header.custom.video:
+              type: text
+              label: YouTube ID

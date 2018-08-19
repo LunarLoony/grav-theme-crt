@@ -1,0 +1,41 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <main id="onegame">
+
+    <figure class="boxart">
+      <img src="{{base_url}}/{{ header.custom.boxart|first.path }}" alt="{{ page.title }}">
+    </figure>
+
+    <section class="description">
+      <h1>{{ page.title }}</h1>
+
+      {{ page.content }}
+
+      <ul>
+        <li><i class="fas fa-gamepad"></i> {{ page.parent.title }}</li>
+        <li><i class="fas fa-keyboard"></i> {{ header.custom.dev }}</li>
+        <li><i class="fas fa-calendar-check"></i> {{ header.custom.rls }}</li>
+      </ul>
+    </section>
+
+    <section class="screenshots">
+      {% for image in page.media.images %}
+        <a class="popup-image" href="{{ image.url }}">
+          <img src="{{ image.url }}" alt="{{ page.title }} Screenshot">
+        </a>
+      {% endfor %}
+    </section>
+
+    {% if header.custom.video %}
+    <section class="video">
+      <h1>Unboxing!</h1>
+
+      <p>
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/{{ header.custom.video }}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+      </p>
+    </section>
+    {% endif %}
+
+  </main>
+{% endblock %}

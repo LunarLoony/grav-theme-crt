@@ -1,0 +1,27 @@
+name: CRT
+version: 0.5.0
+description: Grav theme based on CRT app.
+icon: desktop
+author:
+  name: Spacefarer
+  email: command@spacefarer.space
+homepage: https://github.com/phlum/grav-theme-crt
+demo: http://gotd.spacefarer.club
+keywords: grav, theme, video, games, gaming, retro, collection, collector
+bugs: https://github.com/phlum/grav-theme-crt/issues
+readme: https://github.com/phlum/grav-theme-crt/blob/develop/README.md
+license: GPLv3
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in Menu
+        highlight: 1
+        default: 1
+        options:
+          1: PLUGIN_ADMIN.ENABLED
+          0: PLUGIN_ADMIN.DISABLED
+        validate:
+          type: bool

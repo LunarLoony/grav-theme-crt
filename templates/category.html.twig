@@ -1,0 +1,15 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <main id="games">
+
+    {% for p in page.collection %}
+
+      <a href="{{ p.url }}"><span class="game" style="background-image: url('{{ p.header.custom.boxart|first.path }}');">
+        <p>{{ p.title }}</p>
+      </span></a>
+
+    {% endfor %}
+
+  </main>
+{% endblock %}
